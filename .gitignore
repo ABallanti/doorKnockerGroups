@@ -1,0 +1,33 @@
+# Ignore Python cache files and folders
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignore virtual environment folder
+.venv/
+env/
+venv/
+
+# Ignore temporary files and logs
+*.log
+*.tmp
+*.bak
+
+# Ignore data files
+*.csv
+*.xlsx
+
+# Ignore output files
+grouped_postcodes.csv
+grouped_postcodes_map.html
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE and editor configuration files
+.vscode/
+.idea/
+*.swp
+*.swo
