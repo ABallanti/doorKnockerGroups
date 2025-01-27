@@ -4,7 +4,6 @@ from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut
 import folium
 
-# Function to convert postcodes to coordinates
 # Function to convert postcodes to coordinates with retry
 def get_coordinates(postcode, geolocator, retries=3):
     for attempt in range(retries):
@@ -77,10 +76,10 @@ def create_map(grouped_postcodes):
 
     return m
 
-# Example usage
+# Main code run
 if __name__ == "__main__":
     input_file = "postcodes.csv"  # Replace with your file path
-    number_of_groups = 4  # Replace with the desired number of groups
+    number_of_groups = 8  # Replace with the desired number of groups of close postcodes
 
     try:
         grouped_postcodes = group_postcodes(input_file, number_of_groups)
