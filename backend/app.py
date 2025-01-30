@@ -48,8 +48,9 @@ def upload_file():
 
     try:
         # Process the file
+        print(f"Processing file: {file_path} with {num_groups} groups")  # Debug print
         result_df = group_postcodes(file_path, num_groups)
-
+        
         # Save outputs
         output_csv = os.path.join(app.config["OUTPUT_FOLDER"], "grouped_postcodes.csv")
         result_df.to_csv(output_csv, index=False)
@@ -63,6 +64,9 @@ def upload_file():
             "map_url": "/download/grouped_postcodes_map.html"
         })
     except Exception as e:
+        print(f"Error in upload_file: {str(e)}")  # Debug print
+        import traceback
+        print(traceback.format_exc())  # Print full error traceback
         return jsonify({"error": str(e)}), 500
 
 # Route for downloading output files

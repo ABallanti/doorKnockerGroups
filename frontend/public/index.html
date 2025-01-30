@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Postcode Clustering Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ENWL Branding Colors */
+        :root {
+          --enwl-blue: #00338D;
+          --enwl-green: #007A33;
+          --enwl-light-gray: #F4F4F4;
+          --enwl-dark-gray: #4D4D4F;
+          --header-dark: #1a1f36;  /* Modern dark blue-gray */
+          --header-light: #2d3748;  /* Slightly lighter shade for gradient */
+        }
+
+        body {
+          background-color: var(--enwl-light-gray);
+          font-family: Arial, sans-serif;
+        }
+
+        .header, .footer {
+          background: linear-gradient(135deg, var(--header-dark), var(--header-light));
+          color: white;
+          padding: 1rem;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+          font-family: 'Lato', sans-serif;
+          font-weight: 900;  /* Using the boldest weight for a strong header */
+          font-size: 1.8rem;
+          margin: 0;
+          letter-spacing: 0.2px;
+          text-transform: uppercase;  /* Optional: adds a modern touch */
+        }
+
+        .footer {
+          margin-top: 2rem;
+          text-align: center;
+          font-family: 'Lato', sans-serif;
+          font-weight: 400;
+          font-size: 0.9rem;
+          position: relative;
+          bottom: 0;
+          width: 100%;
+        }
+
+        /* Update responsive styles */
+        @media (max-width: 768px) {
+          .header {
+            padding: 0.8rem;
+          }
+
+          .header h1 {
+            font-size: 1.5rem;
+          }
+        }
+
+        .container {
+          margin-top: 20px;
+        }
+
+        .form-row {
+          display: flex;
+          gap: 10px;
+          align-items: flex-end; /* Align items at the bottom */
+          justify-content: center;
+          margin-bottom: 10px;
+        }
+
+        .btn-enwl {
+          background-color: var(--enwl-green);
+          color: white;
+          border: none;
+        }
+
+        .btn-enwl:hover {
+          background-color: #005A26;
+        }
+
+        .map-container {
+          position: relative;
+          width: 100%;
+          height: 70vh; /* Map takes up 70% of the viewport height */
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          margin-top: 10px;
+        }
+
+        iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+
+        .spinner-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+          display: none; /* Hidden by default */
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          z-index: 10;
+        }
+
+        .spinner-border {
+          width: 3rem;
+          height: 3rem;
+        }
+
+        .loading-text {
+          margin-top: 15px;
+          font-size: 1.2rem;
+          color: var(--enwl-dark-gray);
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Postcode Clustering Tool</h1>
+</div>
+
+<div class="container">
+    <!-- Form Section -->
+    <form id="upload-form">
+        <div class="row g-2 align-items-end mb-3">
+            <div class="col-12 col-md-3">
+                <div class="form-group">
+                    <label for="file" class="form-label">Upload CSV File</label>
+                    <input type="file" class="form-control" id="file" name="file" required>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="form-group">
+                    <label for="num_groups" class="form-label">Number of Groups</label>
+                    <input type="number" class="form-control" id="num_groups" name="num_groups" value="3" min="2" required>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <button type="submit" class="btn btn-enwl btn-lg w-100">Generate Map</button>
+            </div>
+            <div class="col-12 col-md-3">
+                <button id="download-clustered-csv" type="button" class="btn btn-enwl btn-lg w-100">Download Clusters</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Map Section -->
+    <div class="map-container">
+        <iframe id="map-display" src="http://127.0.0.1:5000/placeholder_map"></iframe>
+        <div class="spinner-overlay" id="spinner-overlay">
+            <div class="spinner-border text-primary" role="status"></div>
+            <div class="loading-text">🍳 ML algorithm cooking the data behind the scene. Please wait 😄</div>
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <p class="m-0">Postcode Clustering Tool</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
