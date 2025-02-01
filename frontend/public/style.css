@@ -19,6 +19,10 @@ body {
     font-family: 'Inter', sans-serif;
     color: var(--text-primary);
     line-height: 1.6;
+    min-height: 100vh;  /* better than height: 100vh */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .header, .footer {
@@ -48,20 +52,17 @@ body {
 }
 
 .dashboard-layout {
+    flex: 1;
     display: flex;
-    min-height: calc(100vh - 120px);  /* Adjust based on header/footer height */
     padding: 0rem;
+    min-height: 0;
 }
 
 .sidebar {
-    flex: 0 0 300px;
+    flex: 0 0 300px;  /* This sets width to 300px and prevents growing/shrinking */
     background: var(--card-bg);
     padding: 1.5rem;
-    height: fit-content;
-}
-
-#upload-form {
-    height: 100vh;
+    overflow-y: auto;  /* This allows scrolling if content is too long */
 }
 
 .main-content {
@@ -122,7 +123,6 @@ body {
 
 .map-container {
     background: var(--card-bg);
-    border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     overflow: hidden;
     border: 1px solid var(--border-color);
@@ -176,6 +176,8 @@ body {
     height: 40px;
     padding: 0;
     display: flex;
+    color: black;
+    background-color: #f1c40f;
     align-items: center;
     justify-content: center;
 }
