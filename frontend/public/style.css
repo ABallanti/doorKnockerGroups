@@ -38,7 +38,6 @@ body {
 }
 
 .footer {
-    margin-top: 2rem;
     text-align: center;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
@@ -50,24 +49,26 @@ body {
 
 .dashboard-layout {
     display: flex;
-    gap: 2rem;
-    padding: 2rem;
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 120px);  /* Adjust based on header/footer height */
+    padding: 0rem;
 }
 
 .sidebar {
     flex: 0 0 300px;
     background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     padding: 1.5rem;
     height: fit-content;
+}
+
+#upload-form {
+    height: 100vh;
 }
 
 .main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 0;  /* Add this to prevent overflow */
 }
 
 .control-group {
@@ -124,15 +125,18 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     overflow: hidden;
-    flex: 1;
     border: 1px solid var(--border-color);
-    min-height: 0;
+    flex: 1;  /* Take all available space */
+    display: flex;  /* Add this */
+    flex-direction: column;  /* Add this */
+    min-height: 0;  /* Add this to prevent overflow */
 }
 
 .map-container iframe {
+    flex: 1;  /* Take all available space */
     width: 100%;
-    height: 100%;
     border: none;
+    min-height: 0;  /* Add this to prevent overflow */
 }
 
 .spinner-overlay {

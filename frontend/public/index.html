@@ -8,14 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
-<body>
+<body class="h-100">
     <div class="header">
         <div class="container">
             <h1>Postcode Clustering Tool</h1>
         </div>
     </div>
 
-    <div class="dashboard-layout">
+    <div class="dashboard-layout h-100">
         <!-- Left Sidebar -->
         <div class="sidebar h-100">
             <form id="upload-form">
@@ -32,10 +32,13 @@
                 <div class="control-group">
                     <button type="submit" class="btn btn-primary w-100 mb-3">Generate Map</button>
                 </div>
+                
+                <button id="download-clustered-csv" class="btn btn-primary w-100" disabled>
+                  Download Clusters
+              </button>
+
             </form>
-            <button id="download-clustered-csv" class="btn btn-primary w-100" disabled>
-                Download Clusters
-            </button>
+    
         </div>
 
         <!-- Main Content (Map) -->
