@@ -53,8 +53,8 @@ document.getElementById("upload-form").addEventListener("submit", async (e) => {
 
 // Add event listener for the download button
 document.getElementById("download-clustered-csv").addEventListener("click", async () => {
+    // Remove any spinner management from here - downloads shouldn't show processing state
     try {
-        // Update to use the Node.js server endpoint instead of direct Python backend
         const response = await fetch('/download-csv');
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
