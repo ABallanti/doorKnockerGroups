@@ -40,6 +40,43 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   }
 });
 
+// Add new download route
+app.get("/download-csv", async (req, res) => {
+  try {
+    const response = await axios({
+      method: 'get',
+      url: 'http://127.0.0.1:5000/download/grouped_postcodes.csv',
+      responseType: 'stream'
+    });
+    
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', 'attachment; filename=grouped_postcodes.csv');
+    
+    response.data.pipe(res);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to download file" });
+  }
+});
+
+// Update map route to handle both placeholder and generated maps
+app.get("/map/:mapfile?", async (req, res) => {
+    try {
+        const mapfile = req.params.mapfile || 'placeholder_map.html';
+        const response = await axios({
+            method: 'get',
+            url: `http://127.0.0.1:5000/download/${mapfile}`,
+            responseType: 'text'
+        });
+        
+        res.setHeader('Content-Type', 'text/html');
+        res.send(response.data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Failed to load map");
+    }
+});
+
 // Start the Node.js server
 const PORT = 3000;
 app.listen(PORT, () => {

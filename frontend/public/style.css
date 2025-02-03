@@ -1,17 +1,15 @@
 /* Modern Dashboard Colors */
 :root {
-    --primary-dark: #1a1f36;
-    --primary-light: #2d3748;
-    --accent: #3498db;
-    --accent-hover: #2980b9;
-    --success: #2ecc71;
-    --warning: #f1c40f;
-    --danger: #e74c3c;
-    --background: #f8fafc;
+    --primary-dark: #ffffff;  /* Deep Blue */
+    --primary-light: #ffffff;   /* Slightly lighter blue for gradient */
+    --accent: #fdca40;          /* Bright Orange */
+    --accent-hover: #E65C00;    /* Darker orange for hover */
+    --background: #F4F4F4;      /* Light Gray */
+    --secondary: #E8F1FA;       /* Light Blue */
     --card-bg: #ffffff;
-    --text-primary: #2c3e50;
-    --text-secondary: #95a5a6;
-    --border-color: #edf2f7;
+    --text-primary: #000000;
+    --text-secondary: #ffffff;
+    --border-color: #E8F1FA;    /* Using Light Blue for borders */
 }
 
 body {
@@ -25,7 +23,14 @@ body {
     flex-direction: column;
 }
 
-.header, .footer {
+.header {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+    color: white;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.footer {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
     color: white;
     padding: 1rem;
@@ -33,12 +38,12 @@ body {
 }
 
 .header h1 {
-    font-family: 'Lato', sans-serif;
-    font-weight: 900;
+    font-family: "Audiowide", serif;
+    color: var(--text-primary);
+    font-weight: 700;
     font-size: 1.8rem;
     margin: 0;
     letter-spacing: 0.2px;
-    text-transform: uppercase;
 }
 
 .footer {
@@ -58,11 +63,57 @@ body {
     min-height: 0;
 }
 
+.icon-sidebar {
+    width: 60px;
+    background: white;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    background-color: var(--accent);
+}
+
+.icon-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.icon-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.icon-button:hover {
+    background: var(--secondary);
+    color: var(--primary-dark);
+}
+
+.icon-button.active {
+    background: var(--secondary);
+    color: var(--primary-dark);
+}
+
+.icon-button i {
+    font-size: 1.2rem;
+}
+
 .sidebar {
     flex: 0 0 300px;  /* This sets width to 300px and prevents growing/shrinking */
-    background: var(--card-bg);
+    background: var(--background);
     padding: 1.5rem;
     overflow-y: auto;  /* This allows scrolling if content is too long */
+    border-right: 1px solid var(--border-color);
 }
 
 .main-content {
@@ -81,6 +132,7 @@ body {
     margin-bottom: 0.5rem;
     font-weight: 500;
     color: var(--text-primary);
+    font-family: "Roboto Mono", serif;
 }
 
 .control-group .form-control {
@@ -97,8 +149,12 @@ body {
 }
 
 .form-control:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    border-color: var(--primary-dark);
+    box-shadow: 0 0 0 3px rgba(0, 80, 158, 0.1);
+}
+
+.form-control:hover {
+    border-color: var(--primary-light);
 }
 
 .btn-primary {
@@ -176,10 +232,16 @@ body {
     height: 40px;
     padding: 0;
     display: flex;
-    color: black;
-    background-color: #f1c40f;
+    color: var(--primary-dark);
+    background-color: var(--secondary);
     align-items: center;
     justify-content: center;
+    border: 1px solid var(--primary-dark);
+}
+
+.info-button:hover {
+    background-color: var(--border-color);
+    color: var(--primary-dark);
 }
 
 /* Responsive adjustments */
@@ -193,9 +255,21 @@ body {
     }
 
     .dashboard-layout {
-        flex-direction: column;  /* Stack elements vertically on mobile */
-        padding: 1rem;
-        min-height: calc(100vh - 120px);  /* Adjust based on header/footer height */
+        flex-direction: column;
+    }
+
+    .icon-sidebar {
+        width: 100%;
+        height: 60px;
+        padding: 0 1rem;
+        order: -1; /* This moves it to the top */
+    }
+
+    .icon-group {
+        flex-direction: row; /* Make icons horizontal */
+        width: 100%;
+        justify-content: space-around;
+        padding: 0.5rem 0;
     }
 
     .sidebar {

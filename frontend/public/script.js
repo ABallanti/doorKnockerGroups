@@ -37,8 +37,8 @@ document.getElementById("upload-form").addEventListener("submit", async (e) => {
         if (data.error) {
             alert("Error: " + data.error);
         } else {
-            // Update iframe source with the generated map
-            mapIframe.src = `http://127.0.0.1:5000${data.map_url}`;
+            // Update iframe source with the generated map through Node.js proxy
+            mapIframe.src = `/map/grouped_postcodes_map.html`;
             // Enable download button only after successful processing
             downloadButton.disabled = false;
         }
@@ -54,8 +54,8 @@ document.getElementById("upload-form").addEventListener("submit", async (e) => {
 // Add event listener for the download button
 document.getElementById("download-clustered-csv").addEventListener("click", async () => {
     try {
-        // Create a link to download the file
-        const response = await fetch('http://127.0.0.1:5000/download/grouped_postcodes.csv');
+        // Update to use the Node.js server endpoint instead of direct Python backend
+        const response = await fetch('/download-csv');
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
