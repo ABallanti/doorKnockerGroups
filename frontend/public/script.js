@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
     // Disable download button initially
     const downloadButton = document.getElementById("download-clustered-csv");
     downloadButton.disabled = true;
