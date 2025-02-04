@@ -1,15 +1,13 @@
 /* Modern Dashboard Colors */
 :root {
-    --primary-dark: #ffffff;  /* Deep Blue */
-    --primary-light: #ffffff;   /* Slightly lighter blue for gradient */
-    --accent: #fdca40;          /* Bright Orange */
-    --accent-hover: #E65C00;    /* Darker orange for hover */
-    --background: #F4F4F4;      /* Light Gray */
-    --secondary: #E8F1FA;       /* Light Blue */
-    --card-bg: #ffffff;
-    --text-primary: #000000;
-    --text-secondary: #ffffff;
-    --border-color: #E8F1FA;    /* Using Light Blue for borders */
+    --primary: #ffffff;          /* Combined primary-dark and primary-light */
+    --accent: #fdca40;           /* Bright Orange */
+    --accent-hover: #E65C00;     /* Darker orange for hover */
+    --background: #F4F4F4;       /* Light Gray */
+    --secondary: #E8F1FA;        /* Light Blue - also used for borders */
+    --card-bg: #ffffff;          /* White background for cards */
+    --text-primary: #000000;     /* Black text */
+    --text-secondary: #ffffff;   /* White text */
 }
 
 body {
@@ -25,14 +23,14 @@ body {
 
 .header {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
-    color: white;
+    color: var(--primary);
     padding: 1.5rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .footer {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
-    color: white;
+    color: var(--primary);
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -65,7 +63,7 @@ body {
 
 .icon-sidebar {
     width: 60px;
-    background: white;
+    background: var(--primary);
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
@@ -86,7 +84,7 @@ body {
     border-radius: 8px;
     border: none;
     background: transparent;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,7 +94,7 @@ body {
 
 .icon-button:hover {
     background: var(--secondary);
-    color: var(--primary-dark);
+    color: var(--text-primary);
 }
 
 .icon-button.active {

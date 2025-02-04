@@ -79,5 +79,5 @@ def download_file(filename):
 
 # Start the Flask app
 if __name__ == '__main__':
-    app.run(debug=False)  # Make sure this is False
+    app.run(debug=True)  # Make sure this is False
 
