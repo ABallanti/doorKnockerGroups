@@ -63,16 +63,19 @@ app.get("/download-csv", async (req, res) => {
 app.get("/map/:mapfile?", async (req, res) => {
     try {
         const mapfile = req.params.mapfile || 'placeholder_map.html';
+        console.log('Requesting map:', mapfile);  // Debug log
+        
         const response = await axios({
             method: 'get',
             url: `http://127.0.0.1:5000/download/${mapfile}`,
             responseType: 'text'
         });
         
+        console.log('Got response from Flask');  // Debug log
         res.setHeader('Content-Type', 'text/html');
         res.send(response.data);
     } catch (error) {
-        console.error(error);
+        console.error('Error details:', error.message);  // More detailed error
         res.status(500).send("Failed to load map");
     }
 });

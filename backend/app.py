@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, send_from_directory, send_file
 from flask_cors import CORS
 import os
 import folium
-from backend.clustering_engine import group_postcodes, create_map
+from clustering_engine import group_postcodes, create_map
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -79,5 +79,4 @@ def download_file(filename):
 
 # Start the Flask app
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # Use the PORT variable or default to 5000
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=False)  # Change to False in production
