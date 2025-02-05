@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, send_from_directory, send_file
 from flask_cors import CORS
 import os
 import folium
-from backend.clustering_engine import group_postcodes, create_map
+from clustering_engine import group_postcodes, create_map
 
 # Initialize Flask app
 app = Flask(__name__)
