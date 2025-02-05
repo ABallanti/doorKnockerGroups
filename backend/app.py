@@ -2,11 +2,15 @@ from flask import Flask, request, jsonify, send_from_directory, send_file
 from flask_cors import CORS
 import os
 import folium
+import sys
 from clustering_engine import group_postcodes, create_map
 
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
+
+# Add the directory of the current file to the Python path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # File storage directories
 UPLOAD_FOLDER = "uploads"
