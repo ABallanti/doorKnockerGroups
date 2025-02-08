@@ -30,7 +30,7 @@ body {
 
 .footer {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
-    color: var(--primary);
+    color: var(--text-primary);
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
