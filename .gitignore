@@ -15,7 +15,6 @@ venv/
 *.bak
 
 # Ignore data files
-*.csv
 *.xlsx
 
 # Ignore output files
