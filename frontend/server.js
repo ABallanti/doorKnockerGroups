@@ -4,9 +4,14 @@ const express = require("express");
 const multer = require("multer");
 const axios = require("axios");
 const path = require("path");
+require('dotenv').config();
 
 const app = express();
 const upload = multer({ dest: "uploads/" }); // Temporary upload directory
+
+// Use environment variables instead of hardcoded values
+const PORT = process.env.PORT || 3000;
+const BACKEND_URL = process.env.BACKEND_URL || 'http://127.0.0.1:5000';
 
 // Serve static frontend files
 app.use(express.static("public"));
@@ -25,7 +30,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     formData.append("num_groups", numGroups);
 
     // Send file and data to Python backend
-    const response = await axios.post("http://127.0.0.1:5000/upload", formData, {
+    const response = await axios.post(`${BACKEND_URL}/upload`, formData, {
       headers: formData.getHeaders(),
     });
 
@@ -45,7 +50,7 @@ app.get("/download-csv", async (req, res) => {
   try {
     const response = await axios({
       method: 'get',
-      url: 'http://127.0.0.1:5000/download/grouped_postcodes.csv',
+      url: `${BACKEND_URL}/download/grouped_postcodes.csv`,
       responseType: 'stream'
     });
     
@@ -67,7 +72,7 @@ app.get("/map/:mapfile?", async (req, res) => {
         
         const response = await axios({
             method: 'get',
-            url: `http://127.0.0.1:5000/download/${mapfile}`,
+            url: `${BACKEND_URL}/download/${mapfile}`,
             responseType: 'text'
         });
         
@@ -81,7 +86,6 @@ app.get("/map/:mapfile?", async (req, res) => {
 });
 
 // Start the Node.js server
-const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Frontend running at http://127.0.0.1:${PORT}`);
+  console.log(`Frontend running at port ${PORT}`);
 });
