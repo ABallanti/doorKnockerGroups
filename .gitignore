@@ -21,6 +21,7 @@ venv/
 # Ignore output files
 grouped_postcodes.csv
 grouped_postcodes_map.html
+postcodes.csv
 
 # Ignore system files
 .DS_Store
