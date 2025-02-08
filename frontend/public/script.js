@@ -1,4 +1,4 @@
- document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     // Disable download button initially
     const downloadButton = document.getElementById("download-clustered-csv");
     downloadButton.disabled = true;
@@ -52,7 +52,11 @@ document.getElementById("upload-form").addEventListener("submit", async (e) => {
 });
 
 // Add event listener for the download button
-document.getElementById("download-clustered-csv").addEventListener("click", async () => {
+document.getElementById("download-clustered-csv").addEventListener("click", async (event) => {
+    // Prevent any default behavior and event bubbling
+    event.preventDefault();
+    event.stopPropagation();
+    
     try {
         // Update to use the Node.js server endpoint instead of direct Python backend
         const response = await fetch('/download-csv');
