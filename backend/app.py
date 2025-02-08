@@ -13,8 +13,8 @@ CORS(app)  # Allow cross-origin requests
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # File storage directories
-UPLOAD_FOLDER = "uploads"
-OUTPUT_FOLDER = "outputs"
+UPLOAD_FOLDER = "tmp/uploads"
+OUTPUT_FOLDER = "tmp/outputs"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
