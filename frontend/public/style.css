@@ -170,9 +170,21 @@ body {
     transform: translateY(-1px);
 }
 
+/* Disabled button state */
 .btn-primary:disabled {
-    background-color: var(--text-secondary);
-    opacity: 0.7;
+    background-color: #e9ecef !important;  /* Light gray background */
+    border-color: #e9ecef !important;      /* Light gray border */
+    color: #6c757d !important;             /* Medium gray text */
+    opacity: 0.65;                         /* Slightly transparent */
+    cursor: not-allowed;
+}
+
+/* Enabled button state */
+.btn-primary:not(:disabled) {
+    background-color: var(--accent);  /* Bootstrap primary blue */
+    border-color: #0d6efd;
+    color: white;
+    opacity: 1;
 }
 
 .map-container {

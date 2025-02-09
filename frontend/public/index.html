@@ -43,22 +43,22 @@
         <div class="sidebar">
             <form id="upload-form">
                 <div class="control-group">
-                    <label>Upload CSV File</label>
+                    <label>Upload postcode list</label>
                     <input type="file" class="form-control" id="file" name="file" required>
                 </div>
 
                 <div class="control-group">
-                    <label>Number of Groups</label>
+                    <label>Number of Clusters</label>
                     <input type="number" class="form-control" id="num_groups" name="num_groups" value="3" min="2" required>
                 </div>
 
                 <div class="control-group">
-                    <button type="submit" class="btn btn-primary w-100 mb-3">Generate Map</button>
+                    <button type="submit" class="btn btn-primary w-100 mb-3"> Postcode Map</button>
                 </div>
                 
                 <button id="download-clustered-csv" class="btn btn-primary w-100" disabled>
-                  Download Clusters
-              </button>
+                    Download Clusters
+                </button>
 
             </form>
     
@@ -79,7 +79,7 @@
                 <div class="spinner-overlay" id="spinner-overlay">
                     <div class="text-center">
                         <div class="spinner-border mb-3"></div>
-                        <div class="loading-text">Processing your data...</div>
+                        <div class="loading-text">ML in the background is producing the clusters...</div>
                     </div>
                 </div>
             </div>
@@ -95,14 +95,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Here's how to use the Postcode Clustering Tool:</p>
+                    <p>Here's how this Machine Learning-based Postcode Clustering Tool works:</p>
                     <ol>
-                        <li>Upload your CSV file containing postcodes</li>
-                        <li>Select the number of groups you want to create</li>
-                        <li>Click "Generate Map" to see your clustered results</li>
-                        <li>Use "Download Clusters" to get your labeled data</li>
+                        <li>Upload your CSV file containing postcodes organized in a single column with no headers </li>
+                        <li>Select the number of clusters you want to create</li>
+                        <li>Click "Postcode Map" to see on the map the clustered postcodes by color</li>
+                        <li>Use "Download Clusters" to get an excel file with the list of each postcode and its cluster number</li>
                     </ol>
-                    <p>The tool will automatically group your postcodes into the specified number of clusters based on geographical proximity.</p>
+                    <p>The tool will automatically group your postcodes into the specified number of clusters based on a machine learning algorithm that uses geographical proximity.</p>
                 </div>
             </div>
         </div>
